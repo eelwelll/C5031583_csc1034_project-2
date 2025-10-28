@@ -8,14 +8,31 @@ EJM = JobManager() #EJM = Empty_job_manager
 EJM.__str__()
 EJM.__repr__()
 
+print("---erroneous---")
+try:
+    EJM.edit_job()
+except TypeError:
+    print("Type error")
 
-EJM.edit_job()
-EJM.remove_job()
-EJM.add_job()
+try:
+    EJM.remove_job()
+except TypeError:
+    print("Type Error")
+try:
+    EJM.add_job()
+except TypeError:
+    print("Type Error")
 
-print(EJM.get_jobs())
-print(EJM.get_category_count_per_name())
-print(EJM.get_total_cost_per_name())
+print(EJM.get_jobs()) # returns empty list
+
+try:
+    print(EJM.get_category_count_per_name())
+except IndexError:
+    print("2. Index Error - no items in list")
+try:
+    print(EJM.get_total_cost_per_name())
+except IndexError:
+    print("3. Index Error - no items in list")
 
 EJM.search_by_category()
 EJM.search_by_name_and_date()
